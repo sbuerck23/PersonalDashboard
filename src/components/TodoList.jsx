@@ -37,7 +37,7 @@ function TodoList() {
   }
 
   return (
-    <div className="bg-gray-800 p-6 rounded-2xl shadow-lg text-center w-80 mt-6">
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center w-80 mt-6">
       <h2 className="text-2xl font-semibold mb-4">📝 To-Do List</h2>
 
       {/* Input */}
@@ -60,24 +60,31 @@ function TodoList() {
       {/* Tasks */}
       <ul className="text-left">
         {tasks.length === 0 && (
-          <p className="text-gray-400 text-sm text-center">No tasks yet</p>
+          <p className="text-gray-500 dark:text-gray-400 text-sm text-center">
+            No tasks yet
+          </p>
         )}
         {tasks.map((task) => (
           <li
             key={task.id}
-            className="flex justify-between items-center mb-2 bg-gray-700 p-2 rounded-md"
+            className="flex justify-between items-center mb-2 
+                 bg-gray-100 dark:bg-gray-700 
+                 p-2 rounded-md 
+                 shadow-sm transition-colors duration-300"
           >
             <span
               onClick={() => toggleTask(task.id)}
-              className={`flex-grow cursor-pointer ${
-                task.completed ? "line-through text-gray-400" : ""
+              className={`flex-grow cursor-pointer select-none transition-colors duration-300 ${
+                task.completed
+                  ? "line-through text-gray-400 dark:text-gray-500"
+                  : "text-gray-900 dark:text-gray-100"
               }`}
             >
               {task.text}
             </span>
             <button
               onClick={() => deleteTask(task.id)}
-              className="text-red-400 hover:text-red-500"
+              className="text-red-500 dark:text-red-400 hover:text-red-600 dark:hover:text-red-500 transition-colors"
             >
               ✕
             </button>
