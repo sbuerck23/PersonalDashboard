@@ -27,7 +27,7 @@ function Quote() {
   }, []);
 
   return (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center w-80 mt-6">
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center w-80 mt-4">
       <h2 className="text-2xl font-semibold mb-4">💬 Quote of the Day</h2>
 
       {loading && <p>Loading...</p>}
