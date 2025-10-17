@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 function Weather() {
   const [weather, setWeather] = useState(null);
-  const [city, setCity] = useState("55987");
+  const [city, setCity] = useState(localStorage.getItem("city") || "");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -21,8 +21,9 @@ function Weather() {
 
       const data = await response.json();
       setWeather(data);
+      localStorage.setItem("city", city);
     } catch (err) {
-      setError(err.message);
+      setError("Enter a valid zipcode");
       setWeather(null);
     } finally {
       setLoading(false);
@@ -43,8 +44,8 @@ function Weather() {
           type="text"
           value={city}
           onChange={(e) => setCity(e.target.value)}
-          placeholder="Enter city"
-          className="px-2 py-1 rounded-md text-black"
+          placeholder="Enter zipcode"
+          className="px-2 py-1 rounded-md text-black border border-gray-300 dark:border-transparent"
         />
         <button
           onClick={fetchWeather}
@@ -55,7 +56,7 @@ function Weather() {
       </div>
 
       {loading && <p>Loading...</p>}
-      {error && <p className="text-red-400">{error}</p>}
+      {error && <p className="dark:text-white text-black">{error}</p>}
 
       {weather && (
         <div>

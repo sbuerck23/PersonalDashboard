@@ -15,7 +15,7 @@ function Quote() {
       const data = await response.json();
       setQuote(data);
     } catch (err) {
-      setError(err.message);
+      setError("Lock in twin");
     } finally {
       setLoading(false);
     }
