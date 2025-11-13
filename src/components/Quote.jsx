@@ -10,8 +10,14 @@ function Quote() {
     setError(null);
 
     try {
-      const response = await fetch("http://api.quotable.io/random");
-      if (!response.ok) throw new Error("Failed to fetch quote");
+      const response = await fetch("https://api.quotable.io/random", {
+        mode: "cors",
+        headers: {
+          Accept: "application/json",
+        },
+      });
+      if (!response.ok)
+        throw new Error(`Failed to fetch quote: ${response.status}`);
       const data = await response.json();
       setQuote(data);
     } catch (err) {
