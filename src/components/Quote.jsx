@@ -10,12 +10,12 @@ function Quote() {
     setError(null);
 
     try {
-      const response = await fetch("https://api.quotable.io/random");
+      const response = await fetch("http://api.quotable.io/random");
       if (!response.ok) throw new Error("Failed to fetch quote");
       const data = await response.json();
       setQuote(data);
     } catch (err) {
-      setError("Lock in twin");
+      setError("Failed to fetch");
     } finally {
       setLoading(false);
     }
