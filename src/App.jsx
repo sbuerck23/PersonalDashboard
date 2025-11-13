@@ -16,17 +16,9 @@ function App() {
       <ThemeToggle />
       <h1 className="text-4xl font-bold mb-6">Personal Dashboard</h1>
       <Clock />
-
-      <div className="w-full max-w-5xl flex flex-col md:flex-row items-start md:items-stretch gap-6">
-        <div className="flex-1 space-y-6">
-          <Weather />
-          <Quote />
-        </div>
-
-        <div className="w-full md:w-96">
-          <TodoList />
-        </div>
-      </div>
+      <Weather />
+      <Quote />
+      <TodoList />
     </div>
   );
 }
